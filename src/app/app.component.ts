@@ -19,18 +19,18 @@ export class AppComponent<L1 extends number, H1 extends number, L2 extends numbe
   readonly sigH2 = signal<number>(0);
   readonly sigM2 = computed<Matrix<number,number,number>>(() => initMatrixIntRandom(this.sigL2(),this.sigH2()));
 
-  readonly sigM1plusM2 = computed<Matrix<number,number,number> | undefined> (() => addIntMatrixes(this.sigM1(),this.sigM2()));
-  // if(this.sigL1() == this.sigL2() && this.sigH1() == this.sigH2()){
-  //  return addIntMatrixes(this.sigM1(),this.sigM2());
-  //}
-  //  return;
-  //})
-  readonly sigM1xM2 = computed<Matrix<number,number,number> | undefined> (() => multiplyIntMatrixes(this.sigM1(),this.sigM2()));
-  //  if(this.sigH1() == this.sigL2()){
-  //  return multiplyIntMatrixes(this.sigM1(),this.sigM2());
-  // }
-  //  return;
-  //})
+  readonly sigM1plusM2 = computed<Matrix<number,number,number> | undefined> (() => {
+    if(this.sigL1() == this.sigL2() && this.sigH1() == this.sigH2()){
+    return addIntMatrixes(this.sigM1(),this.sigM2());
+  }
+    return;
+  })
+  readonly sigM1xM2 = computed<Matrix<number,number,number> | undefined> (() => {
+    if(this.sigH1() == this.sigL2()){
+    return multiplyIntMatrixes(this.sigM1(),this.sigM2());
+  }
+    return;
+  })
 
   public updateL1(n:number):void{
     this.sigL1.set(n);
