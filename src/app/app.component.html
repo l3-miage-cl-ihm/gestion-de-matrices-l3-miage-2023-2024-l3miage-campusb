@@ -14,13 +14,10 @@
     <input type="number"
         [ngModel]="sigH2()"
         (ngModelChange) = "updateH2($event)">        
-
-    {{sigL1()}}{{sigH1()}}{{sigL2()}}{{sigH2()}}
-    Matrices : 
-    {{sigM1() | json}}
-    {{sigM2() | json}}
-
     <app-matrix
         [data] = "sigM1()">
+    </app-matrix>
+    <app-matrix
+        [data] = "sigM2()">
     </app-matrix>
 </pre>
