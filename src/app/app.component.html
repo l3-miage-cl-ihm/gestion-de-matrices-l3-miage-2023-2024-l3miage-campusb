@@ -22,7 +22,7 @@
     </app-matrix>
 
     <div *ngIf="sigM1plusM2() as undefined;else elseBlock1">
-            matrice non définie
+            matrice plus non définie
     </div>
     <ng-template #elseBlock1>
         <app-matrix 
@@ -31,7 +31,7 @@
     </ng-template>
 
     <div *ngIf="sigM1xM2() as undefined;else elseBlock2">
-        matrice non définie
+        matrice fois non définie
     </div>
     <ng-template #elseBlock2>
         <app-matrix
