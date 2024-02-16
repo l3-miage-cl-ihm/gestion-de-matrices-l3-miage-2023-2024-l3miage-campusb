@@ -23,13 +23,13 @@ export class AppComponent<L1 extends number, H1 extends number, L2 extends numbe
     if(this.sigL1() == this.sigL2() && this.sigH1() == this.sigH2()){
     return addIntMatrixes(this.sigM1(),this.sigM2());
   }
-    return undefined;
+    return;
   })
   readonly sigM1xM2 = computed<Matrix<number,number,number> | undefined> (() => {
     if(this.sigH1() == this.sigL2()){
     return multiplyIntMatrixes(this.sigM1(),this.sigM2());
   }
-    return undefined ;
+    return;
   })
 
   public updateL1(n:number):void{
