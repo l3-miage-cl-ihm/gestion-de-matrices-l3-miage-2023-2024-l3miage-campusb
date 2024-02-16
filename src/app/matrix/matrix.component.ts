@@ -9,7 +9,7 @@ import { Matrix } from '../matrix';
 })
 export class MatrixComponent {
 
-  @Input({ required: true }) data!: Matrix<number,number,number> | undefined
+  @Input({ required: true }) data!: Matrix<number,number,number>   
 
 
 }

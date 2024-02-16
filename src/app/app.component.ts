@@ -31,7 +31,7 @@ export class AppComponent<L1 extends number, H1 extends number, L2 extends numbe
   }
     return undefined;
   })
-  
+
   public updateL1(n:number):void{
     this.sigL1.set(n);
   }
