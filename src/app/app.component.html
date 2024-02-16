@@ -22,7 +22,6 @@
     </app-matrix>
 
     <div *ngIf="sigM1plusM2() as Matrix;else elseBlock1">
-        matrice plus defini
         <app-matrix 
         [data] = "sigM1plusM2()">
         </app-matrix>
@@ -32,7 +31,6 @@
     </ng-template>
 
     <div *ngIf="sigM1xM2() as Matrix;else elseBlock2">
-        matrice fois defini
         <app-matrix
             [data] = "sigM1xM2()">
         </app-matrix>
