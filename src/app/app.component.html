@@ -21,19 +21,19 @@
         [data] = "sigM2()">
     </app-matrix>
 
-    <div *ngIf="sigM1plusM2() as undefined;else elseBlock">
+    <div *ngIf="sigM1plusM2() as undefined;else elseBlock1">
             matrice non définie
     </div>
-    <ng-template #elseBlock>
+    <ng-template #elseBlock1>
         <app-matrix 
             [data] = "sigM1plusM2()">
         </app-matrix>
     </ng-template>
 
-    <div *ngIf="sigM1xM2() as undefined;else elseBlock">
+    <div *ngIf="sigM1xM2() as undefined;else elseBlock2">
         matrice non définie
     </div>
-    <ng-template #elseBlock>
+    <ng-template #elseBlock2>
         <app-matrix
             [data] = "sigM1xM2()">
         </app-matrix>
