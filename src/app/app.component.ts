@@ -19,6 +19,8 @@ export class AppComponent<L1 extends number, H1 extends number, L2 extends numbe
   readonly sigH2 = signal<number>();
   readonly sigM2 = computed<Vector<number,number>>(() => initMatrixIntRandom(this.sigL2(),this.sigH2()));
 
-
   
+  public updateL1(n:number):void{
+    this.sigL1.set(n);
+  }
 }
