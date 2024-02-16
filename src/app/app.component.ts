@@ -23,4 +23,13 @@ export class AppComponent<L1 extends number, H1 extends number, L2 extends numbe
   public updateL1(n:number):void{
     this.sigL1.set(n);
   }
+  public updateH1(n:number):void{
+    this.sigH1.set(n);
+  }
+  public updateL2(n:number):void{
+    this.sigL2.set(n);
+  }
+  public updateH2(n:number):void{
+    this.sigH2.set(n);
+  }
 }

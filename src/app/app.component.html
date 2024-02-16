@@ -5,6 +5,18 @@
     <input type="number"
         [ngModel]="sigL1()"
         (ngModelChange) = "updateL1($event)">
+    <input type="number"
+        [ngModel]="sigH1()"
+        (ngModelChange) = "updateH1($event)">
+    <input type="number"
+        [ngModel]="sigL2()"
+        (ngModelChange) = "updateL2($event)">
+    <input type="number"
+        [ngModel]="sigH2()"
+        (ngModelChange) = "updateH2($event)">        
 
-    {{sigL1()}}
+    {{sigL1()}}{{sigH1()}}{{sigL2()}}{{sigH2()}}
+    Matrices : 
+    {{sigM1()}}
+    {{sigM2()}}
 </pre>
