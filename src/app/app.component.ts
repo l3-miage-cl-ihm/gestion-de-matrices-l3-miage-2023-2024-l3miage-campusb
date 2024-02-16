@@ -20,13 +20,13 @@ export class AppComponent<L1 extends number, H1 extends number, L2 extends numbe
   readonly sigM2 = computed<Matrix<number,number,number>>(() => initMatrixIntRandom(this.sigL2(),this.sigH2()));
 
   readonly sigM1plusM2 = computed<Matrix<number,number,number> | undefined> (() => {
-    if(this.sigL1 == this.sigL2 && this.sigH1 == this.sigH2){
+    if(this.sigL1() == this.sigL2() && this.sigH1() == this.sigH2()){
     return addIntMatrixes(this.sigM1(),this.sigM2());
   }
     return undefined;
   })
   readonly sigM1xM2 = computed<Matrix<number,number,number> | undefined> (() => {
-    if(this.sigH1 == this.sigL2){
+    if(this.sigH1() == this.sigL2()){
     return multiplyIntMatrixes(this.sigM1(),this.sigM2());
   }
     return undefined;
