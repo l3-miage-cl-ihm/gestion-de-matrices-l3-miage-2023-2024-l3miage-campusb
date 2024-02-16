@@ -11,13 +11,13 @@ import { Matrix, initMatrixIntRandom, addIntMatrixes, multiplyIntMatrixes, Vecto
 export class AppComponent<L1 extends number, H1 extends number, L2 extends number, H2 extends number> {
   // à compléter
 
-  readonly sigL1 = signal<number>();
-  readonly sigH1 = signal<number>();
-  readonly sigM1 = computed<Vector<number,number>>(() => initMatrixIntRandom(this.sigL1(),this.sigH1()));
+  readonly sigL1 = signal<number>(0);
+  readonly sigH1 = signal<number>(0);
+  readonly sigM1 = computed<Matrix<number,number,number>>(() => initMatrixIntRandom(this.sigL1(),this.sigH1()));
 
-  readonly sigL2 = signal<number>();
-  readonly sigH2 = signal<number>();
-  readonly sigM2 = computed<Vector<number,number>>(() => initMatrixIntRandom(this.sigL2(),this.sigH2()));
+  readonly sigL2 = signal<number>(0);
+  readonly sigH2 = signal<number>(0);
+  readonly sigM2 = computed<Matrix<number,number,number>>(() => initMatrixIntRandom(this.sigL2(),this.sigH2()));
 
   
   public updateL1(n:number):void{
