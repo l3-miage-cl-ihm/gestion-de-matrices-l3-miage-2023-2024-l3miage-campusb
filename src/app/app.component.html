@@ -24,6 +24,7 @@
     <div *ngIf="sigM1plusM2() as undefined;else elseBlock">
             matrice non définie
     </div>
+    on rentre dans le else avec {{sigM1plusM2() | json}}
     <ng-template #elseBlock>
         <app-matrix 
             [data] = "sigM1plusM2()">
