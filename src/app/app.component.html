@@ -26,22 +26,23 @@
     <div *ngIf="sigM1plusM2() as Matrix;else elseBlock1">
         <app-matrix 
             [highlight]="sigHhilightInM1plusM2()"
-            [data] = "sigM1plusM2()"
+            [data] = "Matrix"
             (pointerOver) = "overM1plusM2($event)">
-        </app-matrix>
-    </div>
-    <div *ngIf="sigM1xM2() as Matrix;else elseBlock1">
-        <app-matrix
-            [highlight]="sigHhilightInM1xM2()"
-            [data] = "sigM1xM2()"
-            (pointerOver) = "overM1xM2($event)">
         </app-matrix>
     </div>
     <ng-template #elseBlock1>
         matrice plus non définie
     </ng-template>
 
-
-
+    <div *ngIf="sigM1xM2() as Matrix;else elseBlock2">
+        <app-matrix
+            [highlight]="sigHhilightInM1xM2()"
+            [data] = "Matrix"
+            (pointerOver) = "overM1xM2($event)">
+        </app-matrix>
+    </div>
+    <ng-template #elseBlock2>
+        matrice fois non définie
+    </ng-template>
 
 </pre>

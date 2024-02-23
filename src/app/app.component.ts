@@ -35,20 +35,18 @@ export class AppComponent<L1 extends number, H1 extends number, L2 extends numbe
       console.log(addIntMatrixes(this.sigM1(),this.sigM2()))
       return addIntMatrixes(this.sigM1(),this.sigM2());
   }
-  return;
+  return undefined;
   })
   readonly sigM1xM2 = computed<Matrix<number,number,number> | undefined> (() => {
-    const compatibleM1M2 = this.sigH1() == this.sigL2()
-    const compatibleM2M1 = this.sigH2() == this.sigL1()
     const M1undef = this.sigL1() == 0 || this.sigH1() == 0
     const M2undef = this.sigL2() == 0 || this.sigH2() == 0
     
-    if((compatibleM1M2 ||  compatibleM2M1) && !M1undef && !M2undef ){
+    if(this.sigH1() != this.sigL2() || this.sigL1() != this.sigH2() || M1undef || M2undef ){
       console.log(this.sigL1(), this.sigL2(), this.sigH1(), this.sigH2());
       console.log(multiplyIntMatrixes(this.sigM1(),this.sigM2()))
-      return multiplyIntMatrixes(this.sigM1(),this.sigM2());
+      return undefined;
   }
-  return;
+  return multiplyIntMatrixes(this.sigM1(),this.sigM2());
   })
 
   readonly sigHhilightInM1 = signal<Highlight>(undefined)
