@@ -1,7 +1,7 @@
 <p>matrix works!</p>
 <table class="matrix">
     <tr *ngFor = "let row of data; index as i">
-        <th [class.highlight] = "isHighlited(i,j)" *ngFor = "let col of row ;index as j">
+        <th  *ngFor = "let col of row ;index as j">
             {{col}}
             <p (pointerenter) = "updatepointer([i,j])"></p>
             <p (pointerleave) = "updatepointer(undefined)"></p>
