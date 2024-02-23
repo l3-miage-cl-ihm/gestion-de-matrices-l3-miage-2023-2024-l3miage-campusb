@@ -21,14 +21,19 @@ export class MatrixComponent {
     this.pointerOver.emit(pe);
   }
 
-  public isHighlited(line:number,column:number){
-    return this.highlight as HighlightCell && line == this.highlight.line && column == this.highlight.column;
+  public isHighlited(line:number,column:number) {
+    const highlightCell   = this.highlight as HighlightCell;
+    const highlightColumn = this.highlight as HighlightColumn;
+    const highlightLine = this.highlight as HighlightLine;
+    return (( highlightCell.cell && highlightCell.cell[0] === line && highlightCell.cell[1] === column )
+        || ( highlightColumn && highlightColumn.column === column )
+        || (highlightLine && highlightLine.line === line));
   }
 
 }
-export type HighlightLine = {line: number};
-export type HighlightColumn = {column: number};
-export type HighlightCell = {cell: [line: number, column: number]};
+export type HighlightLine = {readonly line: number};
+export type HighlightColumn = {readonly column: number};
+export type HighlightCell = {readonly cell: readonly [line: number, column: number]};
 export type Highlight = undefined
                       | HighlightLine
                       | HighlightColumn

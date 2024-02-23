@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 import { Matrix, initMatrixIntRandom, addIntMatrixes, multiplyIntMatrixes, Vector } from './matrix';
-import { Highlight } from './matrix/matrix.component';
+import { Highlight, HighlightCell } from './matrix/matrix.component';
 
 @Component({
   selector: 'app-root',
@@ -52,7 +52,7 @@ export class AppComponent<L1 extends number, H1 extends number, L2 extends numbe
   }
 
   overM1plusM2(c?: [line:number,column:number]):void{
-    if(c as undefined){
+    if(c == undefined){
       this.sigHhilightInM1xM2.set(undefined)
       this.sigHhilightInM1.set(undefined);
       this.sigHhilightInM2.set(undefined);
@@ -64,7 +64,7 @@ export class AppComponent<L1 extends number, H1 extends number, L2 extends numbe
     }
   }
   overM1xM2(c?: [line:number,column:number]):void{
-    if(c as undefined){
+    if(c == undefined){
       this.sigHhilightInM1xM2.set(undefined)
       this.sigHhilightInM1.set(undefined);
       this.sigHhilightInM2.set(undefined);
