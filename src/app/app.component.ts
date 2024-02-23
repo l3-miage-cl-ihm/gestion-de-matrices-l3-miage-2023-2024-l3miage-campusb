@@ -29,26 +29,26 @@ export class AppComponent<L1 extends number, H1 extends number, L2 extends numbe
     const diffCol = this.sigH1() != this.sigH2()
     const M1undef = this.sigL1() == 0 || this.sigH1() == 0
     const M2undef = this.sigL2() == 0 || this.sigH2() == 0
-    if(diffLines || diffCol || M1undef || M2undef){
+    if(!diffLines && !diffCol && !M1undef && !M2undef){
       console.log("addM1M2")
       console.log(this.sigL1(), this.sigL2(), this.sigH1(), this.sigH2());
       console.log(addIntMatrixes(this.sigM1(),this.sigM2()))
-      return;
+      return addIntMatrixes(this.sigM1(),this.sigM2());
   }
-  return addIntMatrixes(this.sigM1(),this.sigM2());
+  return;
   })
   readonly sigM1xM2 = computed<Matrix<number,number,number> | undefined> (() => {
-    const incompatibleM1M2 = this.sigH1() != this.sigL2()
-    const incompatibleM2M1 = this.sigH2() != this.sigL1()
+    const compatibleM1M2 = this.sigH1() == this.sigL2()
+    const compatibleM2M1 = this.sigH2() == this.sigL1()
     const M1undef = this.sigL1() == 0 || this.sigH1() == 0
     const M2undef = this.sigL2() == 0 || this.sigH2() == 0
     
-    if(incompatibleM1M2 || incompatibleM2M1 || M1undef || M2undef ){
+    if((compatibleM1M2 ||  compatibleM2M1) && !M1undef && !M2undef ){
       console.log(this.sigL1(), this.sigL2(), this.sigH1(), this.sigH2());
       console.log(multiplyIntMatrixes(this.sigM1(),this.sigM2()))
-    return;
+      return multiplyIntMatrixes(this.sigM1(),this.sigM2());
   }
-  return multiplyIntMatrixes(this.sigM1(),this.sigM2());
+  return;
   })
 
   readonly sigHhilightInM1 = signal<Highlight>(undefined)
