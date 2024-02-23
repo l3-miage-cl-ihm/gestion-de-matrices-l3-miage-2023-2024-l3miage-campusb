@@ -15,15 +15,19 @@
         [ngModel]="sigH2()"
         (ngModelChange) = "updateH2($event)">        
     <app-matrix
+        [highlight]="sigHhilightInM1()"
         [data] = "sigM1()">
     </app-matrix>
     <app-matrix
+        [highlight]="sigHhilightInM2()"
         [data] = "sigM2()">
     </app-matrix>
 
     <div *ngIf="sigM1plusM2() as Matrix;else elseBlock1">
         <app-matrix 
-        [data] = "sigM1plusM2()">
+            [highlight]="sigHhilightInM1plusM2()"
+            [data] = "sigM1plusM2()"
+            (pointerOver) = "overM1plusM2($event)">
         </app-matrix>
     </div>
     <ng-template #elseBlock1>
@@ -32,7 +36,9 @@
 
     <div *ngIf="sigM1xM2() as Matrix;else elseBlock2">
         <app-matrix
-            [data] = "sigM1xM2()">
+            [highlight]="sigHhilightInM1xM2()"
+            [data] = "sigM1xM2()"
+            (pointerOver) = "overM1xM2($event)">
         </app-matrix>
     </div>
     <ng-template #elseBlock2>

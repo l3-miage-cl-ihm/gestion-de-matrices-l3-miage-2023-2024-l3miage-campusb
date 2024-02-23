@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 import { Matrix, initMatrixIntRandom, addIntMatrixes, multiplyIntMatrixes, Vector } from './matrix';
+import { Highlight } from './matrix/matrix.component';
 
 @Component({
   selector: 'app-root',
@@ -32,6 +33,11 @@ export class AppComponent<L1 extends number, H1 extends number, L2 extends numbe
     return;
   })
 
+  readonly sigHhilightInM1 = signal<Highlight>(undefined)
+  readonly sigHhilightInM2 = signal<Highlight>(undefined)
+  readonly sigHhilightInM1plusM2 = signal<Highlight>(undefined)
+  readonly sigHhilightInM1xM2 = signal<Highlight>(undefined)
+
   public updateL1(n:number):void{
     this.sigL1.set(n);
   }
@@ -44,4 +50,31 @@ export class AppComponent<L1 extends number, H1 extends number, L2 extends numbe
   public updateH2(n:number):void{
     this.sigH2.set(n);
   }
+
+  overM1plusM2(c?: [line:number,column:number]):void{
+    if(c as undefined){
+      this.sigHhilightInM1xM2.set(undefined)
+      this.sigHhilightInM1.set(undefined);
+      this.sigHhilightInM2.set(undefined);
+    }
+    else{
+    this.sigHhilightInM1plusM2.set({cell:c})
+    this.sigHhilightInM1.set({cell:c})
+    this.sigHhilightInM2.set({cell:c})
+    }
+  }
+  overM1xM2(c?: [line:number,column:number]):void{
+    if(c as undefined){
+      this.sigHhilightInM1xM2.set(undefined)
+      this.sigHhilightInM1.set(undefined);
+      this.sigHhilightInM2.set(undefined);
+    }
+    else{
+    this.sigHhilightInM1xM2.set({cell:c})
+    this.sigHhilightInM1.set({line:c[0]});
+    this.sigHhilightInM2.set({column:c[1]});
+    }
+  }
+
 }
+
