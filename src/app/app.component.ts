@@ -27,7 +27,7 @@ export class AppComponent<L1 extends number, H1 extends number, L2 extends numbe
     return;
   })
   readonly sigM1xM2 = computed<Matrix<number,number,number> | undefined> (() => {
-    if(this.sigH1() == this.sigL2() && this.sigL1() !=0 && this.sigH2() !=0){
+    if(this.sigH1() == this.sigL2() ){
     return multiplyIntMatrixes(this.sigM1(),this.sigM2());
   }
     return;
