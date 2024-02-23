@@ -21,22 +21,34 @@ export class AppComponent<L1 extends number, H1 extends number, L2 extends numbe
   readonly sigM2 = computed<Matrix<number,number,number>>(() => initMatrixIntRandom(this.sigL2(),this.sigH2()));
   readonly eff = effect(() => console.log("sig m1 : ",this.sigM1(),"sig m2 : ",this.sigM2(), "sig m1pM2", this.sigM1plusM2(), "sig M1xM2", this.sigM1xM2(), "\n"));
 
+
+  
+
   readonly sigM1plusM2 = computed<Matrix<number,number,number> | undefined> (() => {
-    if(this.sigL1() == this.sigL2() && this.sigH1() == this.sigH2()){
+    const diffLines = this.sigL1() != this.sigL2()
+    const diffCol = this.sigH1() != this.sigH2()
+    const M1undef = this.sigL1() == 0 || this.sigH1() == 0
+    const M2undef = this.sigL2() == 0 || this.sigH2() == 0
+    if(diffLines || diffCol || M1undef || M2undef){
       console.log("addM1M2")
       console.log(this.sigL1(), this.sigL2(), this.sigH1(), this.sigH2());
       console.log(addIntMatrixes(this.sigM1(),this.sigM2()))
-    return addIntMatrixes(this.sigM1(),this.sigM2());
+      return;
   }
-    return;
+  return addIntMatrixes(this.sigM1(),this.sigM2());
   })
   readonly sigM1xM2 = computed<Matrix<number,number,number> | undefined> (() => {
-    if(this.sigH1() == this.sigL2() ){
+    const incompatibleM1M2 = this.sigH1() != this.sigL2()
+    const incompatibleM2M1 = this.sigH2() != this.sigL1()
+    const M1undef = this.sigL1() == 0 || this.sigH1() == 0
+    const M2undef = this.sigL2() == 0 || this.sigH2() == 0
+    
+    if(incompatibleM1M2 || incompatibleM2M1 || M1undef || M2undef ){
       console.log(this.sigL1(), this.sigL2(), this.sigH1(), this.sigH2());
       console.log(multiplyIntMatrixes(this.sigM1(),this.sigM2()))
-    return multiplyIntMatrixes(this.sigM1(),this.sigM2());
-  }
     return;
+  }
+  return multiplyIntMatrixes(this.sigM1(),this.sigM2());
   })
 
   readonly sigHhilightInM1 = signal<Highlight>(undefined)
