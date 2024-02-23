@@ -41,7 +41,7 @@ export class AppComponent<L1 extends number, H1 extends number, L2 extends numbe
     const M1undef = this.sigL1() == 0 || this.sigH1() == 0
     const M2undef = this.sigL2() == 0 || this.sigH2() == 0
     
-    if(this.sigH1() != this.sigL2() || this.sigL1() != this.sigH2() || M1undef || M2undef ){
+    if(this.sigH1() != this.sigL2() && this.sigL1() != this.sigH2() || M1undef || M2undef ){
       console.log(this.sigL1(), this.sigL2(), this.sigH1(), this.sigH2());
       console.log(multiplyIntMatrixes(this.sigM1(),this.sigM2()))
       return undefined;
