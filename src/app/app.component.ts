@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, effect, signal } from '@angular/core';
 import { Matrix, initMatrixIntRandom, addIntMatrixes, multiplyIntMatrixes, Vector } from './matrix';
 import { Highlight, HighlightCell } from './matrix/matrix.component';
 
@@ -19,6 +19,7 @@ export class AppComponent<L1 extends number, H1 extends number, L2 extends numbe
   readonly sigL2 = signal<number>(0);
   readonly sigH2 = signal<number>(0);
   readonly sigM2 = computed<Matrix<number,number,number>>(() => initMatrixIntRandom(this.sigL2(),this.sigH2()));
+  readonly eff = effect(() => console.log("sig m1 : ",this.sigM1(),"sig m2 : ",this.sigM2(), "sig m1pM2", this.sigM1plusM2(), "sig M1xM2", this.sigM1xM2(), "\n"));
 
   readonly sigM1plusM2 = computed<Matrix<number,number,number> | undefined> (() => {
     if(this.sigL1() == this.sigL2() && this.sigH1() == this.sigH2()){
