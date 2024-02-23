@@ -22,12 +22,17 @@ export class AppComponent<L1 extends number, H1 extends number, L2 extends numbe
 
   readonly sigM1plusM2 = computed<Matrix<number,number,number> | undefined> (() => {
     if(this.sigL1() == this.sigL2() && this.sigH1() == this.sigH2()){
+      console.log("addM1M2")
+      console.log(this.sigL1(), this.sigL2(), this.sigH1(), this.sigH2());
+      console.log(addIntMatrixes(this.sigM1(),this.sigM2()))
     return addIntMatrixes(this.sigM1(),this.sigM2());
   }
     return;
   })
   readonly sigM1xM2 = computed<Matrix<number,number,number> | undefined> (() => {
     if(this.sigH1() == this.sigL2() ){
+      console.log(this.sigL1(), this.sigL2(), this.sigH1(), this.sigH2());
+      console.log(multiplyIntMatrixes(this.sigM1(),this.sigM2()))
     return multiplyIntMatrixes(this.sigM1(),this.sigM2());
   }
     return;
